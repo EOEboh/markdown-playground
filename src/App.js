@@ -5,25 +5,30 @@ import './App.css';
 const md = new Remarkable();
 
 function App() {
+  // state for textarea input value
   const [ text, setText ] = useState("");
+
   return (
-    <>
-      <main>
+    <div className='body'>
+      <main className='main'>
         <h1>Markdown Editor </h1>
         <article>
-          <label htmlFor='markdown'>Type....</label> <br />
-          <textarea cols='30' rows='10' id='markdown' name='markdown' placeholder='Type Something' required
+          <label htmlFor='markdown'><h3>Type Here </h3></label> 
+          <textarea cols='30' rows='10' id='markdown' name='markdown' placeholder='Type Something...' required
           value={text}
           onChange={(e) => setText(e.target.value)}
           >
-
           </textarea>
+          
           <h3> Preview</h3>
 
-          <div dangerouslySetInnerHTML={{__html: md.render(text)}}></div>
+          <div className='output-div' dangerouslySetInnerHTML={{__html: md.render(text)}} >
+
+          </div>
+          
         </article>
       </main>
-    </>
+    </div>
   );
 }
 
